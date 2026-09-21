@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# The framework rewrites these on every `next dev`, and the nightly sweep refuses a dirty tree.
+AGENTS.md
+CLAUDE.md
+
+# Cloudflare build output
+/.open-next/
+/.wrangler/
