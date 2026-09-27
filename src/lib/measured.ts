@@ -5,7 +5,7 @@
  * Re-run `npm run capture` to refresh it.
  */
 export const VERSION = "0.1.0";
-export const CAPTURED_AT = "2026-09-21";
+export const CAPTURED_AT = "2026-09-27";
 export const NODE_ENGINE = ">=18";
 export const LICENCE = "MIT";
 export const PEER = {"playwright":">=1.40.0"};

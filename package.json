@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3308",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3308",
+    "check": "node scripts/check-register.mjs",
+    "capture": "node scripts/capture.mjs",
+    "icons": "node scripts/icons.mjs",
     "lint": "eslint"
   },
   "dependencies": {
