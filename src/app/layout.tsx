@@ -4,7 +4,16 @@ import './globals.css';
 import { PRODUCT } from '@/lib/product';
 
 const mono = IBM_Plex_Mono({ variable: '--font-mono', subsets: ['latin'], weight: ['400', '500'] });
-export const metadata: Metadata = { title: 'glanceless | page-level browser rules', description: PRODUCT.headline, metadataBase: new URL(`https://${PRODUCT.host}`) };
+const SITE_URL = `https://${PRODUCT.host}`;
+const OG_IMAGE = `${SITE_URL}/og-card`;
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: 'glanceless | page-level browser rules',
+  description: PRODUCT.headline,
+  alternates: { canonical: SITE_URL },
+  openGraph: { title: 'glanceless | page-level browser rules', description: PRODUCT.headline, url: SITE_URL, siteName: 'glanceless', type: 'website', images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'glanceless page-level browser rules' }] },
+  twitter: { card: 'summary_large_image', title: 'glanceless | page-level browser rules', description: PRODUCT.headline, images: [OG_IMAGE] },
+};
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const org = { '@type': 'Organization', '@id': 'https://thecompound.tech/#organization', name: 'Compound Labs', url: 'https://thecompound.tech' };

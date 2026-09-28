@@ -22,7 +22,7 @@ export default function Home() {
     <header className="mast"><div className="shell mast-inner">
       <a className="brand" href="#top"><span className="brand-mark">g</span><strong>glanceless</strong></a>
       <span className="standing">MEASURE THE PAGE, NOT THE SOURCE</span>
-      <nav><a className="active" href="#rules">Rules</a><a href="#demo">Demo</a><a href={PRODUCT.repo}>Source <Icon name="arrow-square-out" /></a></nav>
+      <nav><a className="active" href="#rules">Rules</a><a href="#demo">Demo</a><a href="/guides/what-does-glanceless-check">Guide</a><a href={PRODUCT.repo}>Source <Icon name="arrow-square-out" /></a></nav>
       <a className="run" href="#demo"><Icon name="terminal-window" /> Run demo</a>
     </div></header>
     <div className="folio"><div className="shell folio-inner">
@@ -35,7 +35,7 @@ export default function Home() {
         <div className="rail-group rail-note"><p className="eyebrow">THE REFUSAL</p><p>There is no <code>--force</code>, no allowlist and no known-issues file.</p></div>
       </aside>
       <section className="content">
-        <div className="hero"><div className="hero-kicker"><span className="dot" /> glanceless / browser rules</div><h1>Page-level design rules, measured in a real browser, that fail closed.</h1><p className="lede">Contrast, dead columns, page chrome, full-column figures, a figure over a tracked label, table shape, and copy noise. Every rule reads the rendered DOM rather than the source that produced it.</p><div className="hero-actions"><a className="button" href="#demo"><Icon name="terminal-window" /> Read the captured run</a><a className="text-link" href={PRODUCT.repo}>GitHub <Icon name="arrow-square-out" /></a></div></div>
+        <div className="hero"><div className="hero-kicker"><span className="dot" /> glanceless / browser rules</div><h1>Page-level design rules, measured in a real browser, that fail closed.</h1><p className="lede">Contrast, dead columns, page chrome, full-column figures, a figure over a tracked label, table shape, and copy noise. Every rule reads the rendered DOM rather than the source that produced it.</p><div className="hero-actions"><a className="button" href="#demo"><Icon name="terminal-window" /> Read the captured run</a><a className="text-link" href="/guides/what-does-glanceless-check">Read the guide <Icon name="caret-right" /></a><a className="text-link" href={PRODUCT.repo}>GitHub <Icon name="arrow-square-out" /></a></div></div>
         <section id="rules" className="section"><div className="section-head"><div><p className="eyebrow">THE CHECK SET</p><h2>Seven ways a page can look fine and still fail.</h2></div><p className="section-note">Each rule opens a real page in headless Chrome and reports a finding with a CSS selector and the numbers behind it.</p></div>
           <div className="rule-list">{RULES.map((rule, i) => <article className="rule-row" key={rule.id}><div className="rule-no">0{i + 1}</div><div className="rule-icon"><Icon name={rule.glyph as keyof typeof GLYPH} /></div><div className="rule-copy"><h3>{rule.title}</h3><p>{rule.summary}</p><code>{rule.id}</code></div><span className="row-arrow"><Icon name="caret-right" /></span></article>)}</div>
         </section>
