@@ -20,7 +20,7 @@ export default function Home() {
       <span><b>README.md</b> every sentence here</span><span><b>docs/RULES.md</b> threshold detail</span><span><b>npm registry</b> published package</span><span><b>read on</b> {PRODUCT.readOn}</span>
     </div></div>
     <header className="mast"><div className="shell mast-inner">
-      <a className="brand" href="#top"><span className="brand-mark">g</span><strong>glanceless</strong></a>
+      <a className="brand" href="#top"><span className="brand-mark"><img src="/icon.svg" alt="" width={22} height={22} /></span><strong>glanceless</strong></a>
       <span className="standing">MEASURE THE PAGE, NOT THE SOURCE</span>
       <nav><a className="active" href="#rules">Rules</a><a href="#demo">Demo</a><a href="/guides/what-does-glanceless-check">Guide</a><a href={PRODUCT.repo}>Source <Icon name="arrow-square-out" /></a></nav>
       <a className="run" href="#demo"><Icon name="terminal-window" /> Run demo</a>
