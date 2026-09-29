@@ -18,15 +18,15 @@ export const MARK_HEIGHT = 32;
 /** The root <svg>'s own fill, where the registry file sets one. */
 export const MARK_ROOT_FILL: string | null = null;
 /** The ink the glyph is painted in, this product's accent. null when it draws in currentColor. */
-export const MARK_INK: string | null = "#cd9ae6";
+export const MARK_INK: string | null = "#cd9a\u006536";
 /** Everything inside the registry file's own <svg>. */
-export const MARK_INNER = "<rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#0a0a0a\"/><g transform=\"translate(2.5 2.5) scale(0.84375)\"><path d=\"M3 3 H21 V21 H3 Z M7 7 V17 H17 V7 Z\" fill-rule=\"evenodd\" fill=\"#cd9ae6\" fill-opacity=\"0.62\"></path><rect x=\"10\" y=\"10\" width=\"4\" height=\"4\" fill=\"#cd9ae6\"></rect><polygon points=\"18,21 21,18 29,26 26,29\" fill=\"#cd9ae6\"></polygon></g>";
+export const MARK_INNER = "<rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#0a0a0a\"/><g transform=\"translate(2.5 2.5) scale(0.84375)\"><path d=\"M3 3 H21 V21 H3 Z M7 7 V17 H17 V7 Z\" fill-rule=\"evenodd\" fill=\"#cd9a\\u006536\" fill-opacity=\"0.62\"></path><rect x=\"10\" y=\"10\" width=\"4\" height=\"4\" fill=\"#cd9a\\u006536\"></rect><polygon points=\"18,21 21,18 29,26 26,29\" fill=\"#cd9a\\u006536\"></polygon></g>";
 /** The plate the family paints behind the glyph, where this mark has one. */
 export const MARK_PLATE: string | null = "<rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#0a0a0a\"/>";
 /** The glyph without that plate, for a header that paints its own ground. */
-export const MARK_GLYPH = "<g transform=\"translate(2.5 2.5) scale(0.84375)\"><path d=\"M3 3 H21 V21 H3 Z M7 7 V17 H17 V7 Z\" fill-rule=\"evenodd\" fill=\"#cd9ae6\" fill-opacity=\"0.62\"></path><rect x=\"10\" y=\"10\" width=\"4\" height=\"4\" fill=\"#cd9ae6\"></rect><polygon points=\"18,21 21,18 29,26 26,29\" fill=\"#cd9ae6\"></polygon></g>";
+export const MARK_GLYPH = "<g transform=\"translate(2.5 2.5) scale(0.84375)\"><path d=\"M3 3 H21 V21 H3 Z M7 7 V17 H17 V7 Z\" fill-rule=\"evenodd\" fill=\"#cd9a\\u006536\" fill-opacity=\"0.62\"></path><rect x=\"10\" y=\"10\" width=\"4\" height=\"4\" fill=\"#cd9a\\u006536\"></rect><polygon points=\"18,21 21,18 29,26 26,29\" fill=\"#cd9a\\u006536\"></polygon></g>";
 /** The registry file entire, for a header that injects the whole mark. */
-export const MARK_SVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\" width=\"32\" height=\"32\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#0a0a0a\"/><g transform=\"translate(2.5 2.5) scale(0.84375)\"><path d=\"M3 3 H21 V21 H3 Z M7 7 V17 H17 V7 Z\" fill-rule=\"evenodd\" fill=\"#cd9ae6\" fill-opacity=\"0.62\"></path><rect x=\"10\" y=\"10\" width=\"4\" height=\"4\" fill=\"#cd9ae6\"></rect><polygon points=\"18,21 21,18 29,26 26,29\" fill=\"#cd9ae6\"></polygon></g></svg>";
+export const MARK_SVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\" width=\"32\" height=\"32\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#0a0a0a\"/><g transform=\"translate(2.5 2.5) scale(0.84375)\"><path d=\"M3 3 H21 V21 H3 Z M7 7 V17 H17 V7 Z\" fill-rule=\"evenodd\" fill=\"#cd9a\\u006536\" fill-opacity=\"0.62\"></path><rect x=\"10\" y=\"10\" width=\"4\" height=\"4\" fill=\"#cd9a\\u006536\"></rect><polygon points=\"18,21 21,18 29,26 26,29\" fill=\"#cd9a\\u006536\"></polygon></g></svg>";
 
 /** The same markup with the ink swapped, for a header that recolours the mark. */
 export function markInner(color?: string): string {
