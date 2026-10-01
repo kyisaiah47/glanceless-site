@@ -6,12 +6,21 @@ import { PRODUCT, SOURCES } from '@/lib/product';
 import { DEMO_OUTPUT, FINDINGS, RULES, SUITE_PASSED, NOISE_PATTERNS } from '@/lib/measured';
 import { GLYPH } from '@/lib/phosphor';
 import SmoothScroll from '@/components/SmoothScroll';
+import PageViews from '@/components/site-view/PageViews';
+import SimpleHome from '@/components/site-view/SimpleHome';
+import ViewControls from '@/components/site-view/ViewControls';
 
 function Icon({ name }: { name: keyof typeof GLYPH }) {
   return <svg className="icon" viewBox="0 0 256 256" aria-hidden="true" dangerouslySetInnerHTML={{ __html: GLYPH[name] }} />;
 }
 
+/* One page, two compositions: the Console below, unchanged apart from the view controls under its
+ * footer, and the Simple home. */
 export default function Home() {
+  return <PageViews consoleView={<ConsoleHome />} simpleView={<SimpleHome />} />;
+}
+
+function ConsoleHome() {
   const [mode, setMode] = useState<'rules' | 'findings'>('rules');
   const visibleFindings = useMemo(() => mode === 'rules' ? FINDINGS : FINDINGS.filter((f) => f.rule !== 'noise'), [mode]);
   return <>
@@ -47,5 +56,6 @@ export default function Home() {
       <aside className="right-rail"><div className="rail-group"><p className="eyebrow">WHAT IT READS</p><div className="right-row"><Icon name="browser" /><span>rendered DOM<br /><small>not the framework or stylesheet</small></span></div><div className="right-row"><Icon name="ruler" /><span>geometry, computed style<br /><small>or pixels from a canvas</small></span></div><div className="right-row"><Icon name="warning-circle" /><span>exit 2<br /><small>could not check is not clean</small></span></div></div><div className="rail-group"><p className="eyebrow">EXIT CODES</p><div className="exit"><b className="pass">0</b><span>checked, clean</span></div><div className="exit"><b className="fail">1</b><span>checked, finding</span></div><div className="exit"><b className="caution">2</b><span>could not check</span></div></div><div className="rail-group source-rail"><p className="eyebrow">SOURCES</p>{SOURCES.map((source) => <a href={source.url} key={source.id}>{source.cite}<small>{source.read_at}</small></a>)}</div></aside>
     </main>
     <footer><div className="shell footer-inner"><div className="footer-credit">Built by <img className="studio-credit-mark" src="/brand/compound-labs.svg" alt="Compound Labs" width={20} height={20} /></div><span>© 2026 glanceless. A Compound Labs product.</span><a href="mailto:hello@thecompound.tech">hello@thecompound.tech</a></div></footer>
+    <div className="sv-tools-strip"><div className="shell"><ViewControls /></div></div>
   </>;
 }

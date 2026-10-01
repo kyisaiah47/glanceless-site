@@ -1,4 +1,7 @@
 import Link from 'next/link';
+import ChromeSwitch from '@/components/site-view/ChromeSwitch';
+import ViewControls from '@/components/site-view/ViewControls';
+import { SimpleHeader, SimpleFooter } from '@/components/site-view/SimpleChrome';
 
 const README = 'https://github.com/kyisaiah47/glanceless#readme';
 const RULES = 'https://github.com/kyisaiah47/glanceless/blob/main/docs/RULES.md';
@@ -12,8 +15,11 @@ export const metadata = {
 export default function Guide() {
   return (
     <>
+      {/* The Console chrome below is unchanged; Simple swaps in its own header. */}
+      <ChromeSwitch simpleNode={<SimpleHeader />} consoleNode={<>
       <div className="read-strip"><div className="shell read-inner"><span><b>GUIDE</b> answer first</span><span><b>PROCEDURE</b> rendered page</span><span><b>read on</b> 2026-09-29</span></div></div>
       <header className="mast"><div className="shell mast-inner"><Link className="brand" href="/"><span className="brand-mark"><img src="/icon.svg" alt="" width={22} height={22} /></span><strong>glanceless</strong></Link><span className="standing">MEASURE THE PAGE, NOT THE SOURCE</span><nav><Link href="/">Rules</Link><Link className="active" href="/guides/how-to-check-rendered-webpage">Guide</Link><a href={README}>Source</a></nav></div></header>
+      </>} />
       <main className="shell guide-frame">
         <article className="guide-content">
           <p className="eyebrow">GLANCELESS / SPECIFIC QUESTION</p>
@@ -25,7 +31,10 @@ export default function Guide() {
           <p className="guide-back"><Link href="/guides/what-does-glanceless-check">Read the complete list of rendered checks</Link></p>
         </article>
       </main>
+      <ChromeSwitch simpleNode={<SimpleFooter />} consoleNode={<>
       <footer><div className="shell footer-inner"><div className="footer-credit">Built by <img className="studio-credit-mark" src="/brand/compound-labs.svg" alt="Compound Labs" width={20} height={20} /></div><span>© 2026 glanceless. A Compound Labs product.</span><a href="mailto:hello@thecompound.tech">hello@thecompound.tech</a></div></footer>
+      <div className="sv-tools-strip"><div className="shell"><ViewControls /></div></div>
+      </>} />
     </>
   );
 }

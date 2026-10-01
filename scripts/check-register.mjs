@@ -25,7 +25,9 @@ const badDash = text.flatMap(([p, s]) => [...s].filter((c) => ['—', '–', '�
 if (badDash.length) fail('wide dash in ' + [...new Set(badDash)].join(', '));
 const product = read('src/lib/product.ts');
 const css = read('src/app/globals.css');
-const expectedHomes = ['src/app/globals.css', 'src/app/icon.svg', 'src/app/og-card/route.tsx', 'src/lib/product.ts', 'public/favicon.svg', 'README.md'];
+/* src/icons/mark.generated.ts is the header and tab mark, written by compound-ops/brand/app-icons/sync.mjs
+ * from the logo registry since c19653b. The mark is drawn in the accent, so it is one of the accent's homes. */
+const expectedHomes = ['src/app/globals.css', 'src/app/icon.svg', 'src/app/og-card/route.tsx', 'src/icons/mark.generated.ts', 'src/lib/product.ts', 'public/favicon.svg', 'README.md'];
 const accentFiles = text.filter(([, s]) => /#CD9AE6/i.test(s)).map(([p]) => path.relative(ROOT, p));
 if (accentFiles.some((p) => !expectedHomes.includes(p))) fail('accent appears outside declared homes: ' + accentFiles.join(', '));
 if (!css.includes('--accent:#CD9AE6') || !css.includes('--accent-hover:#E1ACFA')) fail('accent or hover is not declared');

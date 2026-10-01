@@ -1,0 +1,283 @@
+/* THE SIMPLE VIEW, ON GLANCELESS'S OWN REGISTER. Same tokens, faces and accent as globals.css,
+ * aliased below to the names this sheet uses. Room comes
+ * from layout and larger reading type, never from a narrow shell: the content column is the
+ * Console's own --shell with a wider gutter. Sans for sentences; mono only for commands, codes,
+ * paths and the small labels. The accent paints what the reader is doing (the action, focus,
+ * the chosen view) and never a result. */
+
+.sv-surface [hidden] { display: none !important; }
+
+.sv-in { max-width: var(--shell); margin: 0 auto; padding: 0 var(--sv-gut); }
+/* The aliases are declared on the dialog as well, because the welcome renders outside the view
+   wrapper. */
+[data-view], .sv-welcome {
+  --sv-gut: clamp(16px, 4vw, 56px);
+  --ink-2: var(--faint); --ink-3: var(--muted); --panel-2: var(--panel2); --line-2: #36333b;
+  --accent-line: rgb(205 154 230 / 0.36); --on-accent: var(--ground);
+  --ease: cubic-bezier(0.32, 0.72, 0, 1); --in: 140ms var(--ease); --out: 240ms var(--ease);
+}
+
+.sv-label { display: block; font: 11px/1.6 var(--mono); letter-spacing: 0.08em; color: var(--ink-3); }
+
+/* HEADER */
+.sv-nav { border-bottom: 1px solid var(--line); }
+.sv-nav .sv-in { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 14px; padding-bottom: 14px; }
+.sv-brand { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font: 600 17px/1 var(--sans); letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+.sv-brand img { display: block; flex: none; }
+.sv-nav nav { display: flex; align-items: center; gap: 28px; }
+.sv-nav nav a { padding: 12px 0; font-size: 15px; color: var(--ink-2); text-decoration: none; transition: color var(--in); }
+.sv-nav nav a:hover { color: var(--ink); }
+.sv-nav nav a[aria-current='page'] { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 6px; }
+
+.sv-main { padding-bottom: 24px; }
+
+/* HERO */
+.sv-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: center; padding: 72px 0 80px; }
+.sv-pitch h1 { margin: 0; padding: 20px 0 24px; font: 500 clamp(40px, 4.4vw, 64px)/1.06 var(--sans); letter-spacing: -0.04em; }
+.sv-pitch > p { margin: 0; font-size: 19px; line-height: 1.7; color: var(--ink-2); }
+.sv-pitch > .sv-qualifier { padding-top: 24px; font-size: 14px; line-height: 1.7; color: var(--ink-3); }
+
+/* CARDS */
+.sv-card { border: 1px solid var(--line-2); background: var(--panel); padding: 32px; }
+.sv-step { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; font: 11px/1.6 var(--mono); letter-spacing: 0.06em; color: var(--ink-3); }
+.sv-action h2 { margin: 0; padding-top: 20px; font: 500 28px/1.25 var(--sans); letter-spacing: -0.025em; }
+.sv-action > p { margin: 0; padding-top: 14px; font-size: 16px; line-height: 1.7; color: var(--ink-2); }
+.sv-copy { display: flex; flex-direction: column; gap: 12px; padding-top: 24px; }
+.sv-copy label { font-size: 14px; color: var(--ink-2); }
+.sv-command {
+  width: 100%; min-width: 0; height: 54px; padding: 0 16px; border: 1px solid var(--line-2); border-radius: 0;
+  background: var(--ground); color: var(--ink); font: 17px var(--mono);
+}
+.sv-primary {
+  width: 100%; min-height: 52px; padding: 12px 20px; border: 0; cursor: pointer;
+  background: var(--accent); color: var(--on-accent); font: 600 16px/1.3 var(--sans);
+  transition: background var(--in);
+}
+.sv-primary:hover { background: var(--accent-hover); }
+.sv-copy-status { margin: 0; font-size: 14px; line-height: 1.6; color: var(--caution); }
+.sv-copy-status:empty { display: none; }
+.sv-terms { margin: 0; padding-top: 18px; font: 11px/1.7 var(--mono); letter-spacing: 0.04em; color: var(--ink-3); }
+
+/* SECTIONS */
+.sv-section { border-top: 1px solid var(--line); padding: 56px 0; scroll-margin-top: 24px; }
+.sv-section-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px clamp(32px, 6vw, 96px); align-items: end; padding-bottom: 32px; }
+.sv-section-intro h2 { margin: 0; padding-top: 14px; font: 500 34px/1.2 var(--sans); letter-spacing: -0.03em; }
+.sv-section-intro > p { margin: 0; font-size: 17px; line-height: 1.7; color: var(--ink-2); }
+
+/* THE EXAMPLE RESULT. The sentence first, the list and the raw output behind disclosures. */
+.sv-result h3 { margin: 0; padding-top: 24px; font: 500 27px/1.35 var(--sans); letter-spacing: -0.02em; }
+.sv-result > p { margin: 0; padding: 16px 0 28px; font-size: 17px; line-height: 1.7; color: var(--ink-2); }
+.sv-result > .sv-note { padding: 24px 0 0; font-size: 14px; color: var(--ink-3); }
+.sv-violations { list-style: none; margin: 0; padding: 0; }
+.sv-violations li { display: grid; gap: 10px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.sv-violations li:first-child { padding-top: 0; }
+.sv-violations li:last-child { border-bottom: 0; padding-bottom: 0; }
+.sv-violations p { margin: 0; font-size: 17px; line-height: 1.6; color: var(--ink); }
+.sv-violations code { font-size: 13px; line-height: 1.6; color: var(--fail); overflow-wrap: anywhere; }
+
+/* DISCLOSURES */
+.sv-disclosure { border-top: 1px solid var(--line); }
+.sv-disclosure:last-of-type { border-bottom: 1px solid var(--line); }
+.sv-disclosure > button {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; min-height: 60px;
+  padding: 18px 0; border: 0; background: none; color: var(--ink); cursor: pointer; text-align: left;
+  font: 500 18px/1.45 var(--sans);
+}
+.sv-disclosure > button:hover .sv-sign { color: var(--ink); }
+.sv-sign { flex: none; color: var(--ink-3); font: 400 22px/1 var(--sans); transition: transform var(--out), color var(--in); }
+.sv-disclosure > button[aria-expanded='true'] .sv-sign { transform: rotate(45deg); }
+.sv-reveal { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows var(--out), opacity 240ms ease; }
+.sv-reveal[data-open='true'] { grid-template-rows: 1fr; opacity: 1; }
+.sv-reveal > div { min-height: 0; overflow: hidden; }
+.sv-answer { padding: 4px 0 24px; font-size: 16px; line-height: 1.75; color: var(--ink-2); }
+.sv-answer > p { margin: 0; }
+.sv-answer > p + p, .sv-answer > p + ul, .sv-answer > .term-cap { margin-top: 14px; }
+.sv-answer a { color: var(--ink); }
+.sv-plain { margin: 0; padding-left: 20px; }
+.sv-plain li { padding: 6px 0; }
+.sv-plain strong, .sv-exits strong { color: var(--ink); font-weight: 600; }
+
+/* THE THREE STEPS */
+.sv-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.sv-steps .sv-card { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.sv-step-n { font: 13px/1 var(--mono); color: var(--ink-3); }
+.sv-steps h3, .sv-gates h3 { margin: 0; font: 500 21px/1.35 var(--sans); letter-spacing: -0.015em; }
+.sv-steps p, .sv-gates p { margin: 0; font-size: 16px; line-height: 1.7; color: var(--ink-2); }
+.sv-steps .cmd, .sv-gate .cmd { font-size: 14px; }
+.sv-steps .sv-disclosure:last-of-type { border-bottom: 0; }
+.sv-steps .spec { font-size: 12.5px; }
+
+/* EXIT CODES, at body size: a code in its own ink and its meaning as a sentence. */
+.sv-exits { margin-top: 40px; }
+.sv-exits h3 { margin: 0 0 12px; font: 500 21px/1.35 var(--sans); }
+.sv-exits ul { list-style: none; margin: 0; padding: 0; }
+.sv-exits li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 16px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.sv-exits li:last-child { border-bottom: 0; }
+.sv-exits .st { font-size: 16px; }
+.sv-exits p { margin: 0; font-size: 16px; line-height: 1.7; color: var(--ink-2); }
+.sv-exits--flush { margin-top: 0; }
+
+/* MORE GATES */
+.sv-gates { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.sv-gates .sv-card { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.sv-gate-cmd { font-size: 13px; color: var(--ink-3); }
+.sv-gates a { margin-top: auto; padding: 10px 0 0; font-size: 15px; }
+
+/* SUPPORT AND NEXT STEPS */
+.sv-support { padding-top: 40px; }
+.sv-support h3 { margin: 0; font: 500 21px/1.35 var(--sans); }
+.sv-support p { margin: 0; padding-top: 14px; font-size: 16px; line-height: 1.7; color: var(--ink-2); }
+.sv-next { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px 32px; border-top: 1px solid var(--line); padding: 32px 0 40px; }
+.sv-next a { padding: 10px 0; font-size: 17px; text-decoration: none; }
+.sv-next a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
+
+/* READING PAGES. The heading is the section intro's two columns, title left and the explaining
+   sentence right, so a long sentence never runs the full shell. */
+.sv-page-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px clamp(32px, 6vw, 96px); align-items: end; padding: 64px 0 48px; }
+.sv-page-head h1 { margin: 0; padding-top: 16px; font: 500 clamp(36px, 4vw, 56px)/1.1 var(--sans); letter-spacing: -0.035em; }
+.sv-page-head > p { margin: 0; font-size: 19px; line-height: 1.7; color: var(--ink-2); }
+.sv-gate { display: flex; flex-direction: column; gap: 20px; }
+.sv-gate-line { margin: 0; font-size: 17px; line-height: 1.7; color: var(--ink-2); }
+.sv-card .spec + .sv-gate-line { padding: 20px 0 14px; }
+.sv-gate .sv-disclosure:last-of-type { border-bottom: 0; }
+.sv-lead { margin: 0; font-size: 18px; line-height: 1.75; color: var(--ink); }
+.sv-links { list-style: none; margin: 0; padding: 20px 0 0; display: flex; flex-wrap: wrap; gap: 8px 32px; }
+.sv-links a { display: inline-block; padding: 10px 0; font-size: 16px; }
+.sv-sources { list-style: none; margin: 0; padding: 0; }
+.sv-sources li { padding: 18px 0; border-bottom: 1px solid var(--line); }
+.sv-sources li:first-child { padding-top: 0; }
+.sv-sources li:last-child { border-bottom: 0; }
+.sv-sources p { margin: 0; color: var(--ink); }
+.sv-sources blockquote { margin: 10px 0 0; padding: 0; font: 14px/1.6 var(--mono); color: var(--caution); overflow-wrap: anywhere; }
+.sv-sources .sv-source-meta { display: flex; flex-wrap: wrap; gap: 6px 16px; padding-top: 10px; font-size: 14px; color: var(--ink-3); }
+.sv-sources .sv-source-meta a { color: var(--ink-2); }
+
+/* FOOTER, Simple */
+.sv-footer { border-top: 1px solid var(--line); background: var(--panel); }
+.sv-footer .sv-in { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px 40px; padding-top: 32px; padding-bottom: 28px; }
+.sv-footer-main { display: grid; gap: 18px; }
+.sv-footer nav { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+.sv-footer nav a { padding: 10px 0; font-size: 14px; color: var(--ink-2); text-decoration: none; }
+.sv-footer nav a:hover { color: var(--ink); }
+.sv-footer-credit { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 20px; font-size: 13px; color: var(--ink-3); }
+
+/* VIEW CONTROLS, in both footers */
+.sv-tools { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 24px; font: 14px/1.6 var(--sans); color: var(--ink-3); }
+.sv-tools > div { display: flex; align-items: center; gap: 20px; }
+.sv-tools button { min-height: 44px; padding: 0; border: 0; background: none; color: var(--ink-2); font: inherit; cursor: pointer; }
+.sv-tools button:hover { color: var(--ink); }
+.sv-tools button[aria-pressed='true'] { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 6px; }
+.sv-tools-strip { border-top: 1px solid var(--line); background: var(--panel); }
+.sv-tools-strip .in { padding-top: 4px; padding-bottom: 4px; }
+
+[data-view='simple'] :focus-visible, .sv-welcome :focus-visible, .sv-tools :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+/* THE WELCOME */
+.sv-welcome {
+  width: min(760px, calc(100vw - 40px)); max-width: none; max-height: calc(100dvh - 40px); overflow: auto;
+  margin: auto; padding: 0; border: 1px solid var(--line-2); background: var(--ground); color: var(--ink);
+  opacity: 0; transform: translateY(12px) scale(0.99);
+  transition: opacity 220ms ease, transform 220ms var(--ease);
+  box-shadow: 0 30px 120px rgb(0 0 0 / 0.66);
+}
+.sv-welcome[data-visible='true'] { opacity: 1; transform: none; }
+.sv-welcome::backdrop { background: rgb(0 0 0 / 0); backdrop-filter: blur(0); transition: background 220ms ease, backdrop-filter 220ms ease; }
+.sv-welcome[data-visible='true']::backdrop { background: rgb(0 0 0 / 0.66); backdrop-filter: blur(4px); }
+.sv-welcome h2, .sv-welcome h3, .sv-welcome p { margin: 0; }
+.sv-welcome-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px 10px 24px; border-bottom: 1px solid var(--line); }
+.sv-brand-static { display: inline-flex; align-items: center; gap: 10px; font: 600 15px/1 var(--sans); }
+.sv-brand-static small { font: 11px var(--mono); letter-spacing: 0.06em; color: var(--ink-3); }
+.sv-close { width: 44px; height: 44px; border: 0; background: none; color: var(--ink-2); font-size: 26px; cursor: pointer; }
+.sv-close:hover { color: var(--ink); }
+.sv-welcome-intro { padding: 32px 32px 24px; }
+.sv-welcome-intro h2 { padding-bottom: 14px; font: 500 clamp(26px, 3vw, 36px)/1.18 var(--sans); letter-spacing: -0.03em; }
+.sv-welcome-intro p { font-size: 16px; line-height: 1.7; color: var(--ink-2); }
+.sv-illustration { margin: 0 32px; border: 1px solid var(--line); background: var(--panel); }
+.sv-illustration-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 10px 16px; border-bottom: 1px solid var(--line); font: 10px/1.6 var(--mono); letter-spacing: 0.06em; color: var(--ink-3); }
+.sv-illustration-plan { padding: 16px; font-size: 15px; line-height: 1.6; color: var(--ink); }
+.sv-welcome .sv-illustration-found { display: grid; gap: 8px; margin: 0 16px 16px; padding: 14px 16px; background: var(--panel-2); }
+.sv-illustration-found code { font-size: 13px; color: var(--fail); overflow-wrap: anywhere; }
+.sv-illustration-found span { font-size: 14px; color: var(--ink-2); }
+.sv-welcome-choose { padding: 28px 32px 30px; }
+.sv-welcome-choose-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 16px; }
+.sv-welcome-choose h3 { font: 500 16px/1.5 var(--sans); }
+.sv-welcome-choose-head p { font-size: 13px; color: var(--ink-3); }
+.sv-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.sv-choices button {
+  display: flex; flex-direction: column; gap: 8px; padding: 20px; text-align: left; cursor: pointer;
+  border: 1px solid var(--line-2); background: var(--panel); color: var(--ink); font: inherit;
+  transition: background 180ms, border-color 180ms, transform 180ms;
+}
+.sv-choices b { font: 600 15px/1.4 var(--sans); }
+.sv-choices strong { padding-top: 10px; font: 500 15px/1.5 var(--sans); }
+.sv-choices span { font-size: 14px; line-height: 1.6; color: var(--ink-2); }
+.sv-choices button:hover { border-color: var(--accent-line); background: var(--panel-2); }
+@media (hover: hover) and (pointer: fine) { .sv-choices button:hover { transform: translateY(-2px); } }
+.sv-welcome-foot { padding: 14px 24px; border-top: 1px solid var(--line); background: var(--panel); }
+.sv-welcome-foot label { display: flex; align-items: center; gap: 10px; min-height: 32px; font-size: 13px; color: var(--ink-2); cursor: pointer; }
+.sv-welcome input[type='checkbox'] { width: 18px; height: 18px; margin: 0; accent-color: var(--accent); }
+
+@media (max-width: 1000px) {
+  .sv-hero { grid-template-columns: minmax(0, 1fr); padding: 48px 0 56px; gap: 40px; }
+  .sv-section-intro, .sv-page-head { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .sv-steps, .sv-gates { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .sv-nav .sv-in { flex-wrap: wrap; gap: 4px 16px; padding-top: 10px; padding-bottom: 6px; }
+  .sv-nav nav { width: 100%; justify-content: space-between; gap: 4px 16px; flex-wrap: wrap; }
+  .sv-nav nav a { font-size: 14px; }
+  .sv-pitch h1 { font-size: 40px; }
+  .sv-pitch > p { font-size: 17px; }
+  .sv-card { padding: 24px 18px; }
+  .sv-section { padding: 40px 0; }
+  .sv-section-intro h2 { font-size: 28px; }
+  .sv-result h3 { font-size: 22px; }
+  .sv-next { flex-direction: column; gap: 4px; }
+  .sv-page-head { padding: 40px 0 32px; }
+  .sv-page-head > p { font-size: 17px; }
+  .sv-welcome { width: calc(100vw - 24px); max-height: calc(100dvh - 24px); }
+  .sv-welcome-intro { padding: 24px 20px 20px; }
+  .sv-illustration { margin: 0 20px; }
+  .sv-welcome-choose { padding: 24px 20px; }
+  .sv-welcome-choose-head { display: block; }
+  .sv-welcome-choose-head p { padding-top: 6px; }
+  .sv-choices { grid-template-columns: minmax(0, 1fr); }
+  .sv-welcome-foot { padding: 12px 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sv-reveal, .sv-welcome, .sv-welcome::backdrop, .sv-choices button, .sv-sign { transition: none; }
+}
+
+/* The spec sample is read, not scanned, so it is set at the Simple view's code size. */
+[data-view='simple'] .sv-card > .spec, .sv-steps .spec { font-size: 13.5px; line-height: 1.6; }
+
+/* GLANCELESS PIECES */
+.sv-brand img, .sv-brand-static img { display: block; width: 22px; height: 22px; flex: none; }
+.sv-result h3 { padding-bottom: 0; }
+.sv-term, .sv-cmd {
+  margin: 0; padding: 16px 18px; overflow-x: auto; white-space: pre; border: 1px solid var(--line); background: var(--ground);
+  font: 13px/1.6 var(--mono); color: var(--ink-2);
+}
+.sv-cmd { border-color: var(--accent-line); color: var(--ink); white-space: pre-wrap; }
+.sv-code { font: 500 16px/1.6 var(--mono); }
+.sv-code[data-ink='pass'] { color: var(--pass); }
+.sv-code[data-ink='fail'] { color: var(--fail); }
+.sv-code[data-ink='caution'] { color: var(--caution); }
+.sv-answer code { font-size: 14px; color: var(--ink); }
+.sv-terms { font: 14px/1.6 var(--sans); letter-spacing: 0; }
+.sv-tools-strip { border-top: 1px solid var(--line); background: var(--panel); }
+.sv-tools-strip .shell { padding-top: 4px; padding-bottom: 4px; }
+
+/* READING ROUTES IN SIMPLE: the two guides keep their body at reading size under Simple chrome. */
+[data-view='simple'] .guide-frame { width: min(100%, var(--shell)); padding-left: var(--sv-gut); padding-right: var(--sv-gut); }
+[data-view='simple'] .guide-content h1 { font-size: clamp(34px, 3.8vw, 52px); line-height: 1.12; letter-spacing: -0.03em; }
+[data-view='simple'] .guide-content p, [data-view='simple'] .guide-content li { font-size: 17px; line-height: 1.75; }
+[data-view='simple'] .guide-content h2 { font-size: 26px; line-height: 1.3; }
+
+/* The site's own `footer` rule sets mono and stacks the credit; the Simple footer and the welcome
+   dialog's footer are sentences and links, so they take the sentence face and keep the credit on
+   one line. */
+.sv-footer, .sv-welcome-foot { font-family: var(--sans); }
+.sv-footer .credit { display: inline-flex; align-items: center; gap: 9px; color: var(--ink-3); text-decoration: none; }
+.sv-footer .studio-credit-mark { display: block; width: 20px; height: 20px; }
+.sv-footer-credit { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 20px; font-size: 13px; color: var(--ink-3); }
