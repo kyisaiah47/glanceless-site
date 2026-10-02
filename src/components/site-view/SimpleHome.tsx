@@ -23,14 +23,13 @@ export default function SimpleHome() {
         <div className="sv-in">
           <section className="sv-hero">
             <div className="sv-pitch">
-              <span className="sv-label">MEASURE THE PAGE, NOT THE SOURCE</span>
-              <h1>Find the design faults a build will not catch.</h1>
+              <span className="sv-label">MEASURE THE RENDERED PAGE, NOT THE SOURCE</span>
+              <h1>Find page-level design faults a build will not catch.</h1>
               <p>
-                glanceless opens your page in a real browser and checks seven page-level design
-                rules. Every rule reads the rendered page rather than the code that produced it.
+                glanceless opens your page in a real browser, checks seven page-level design rules, and reads each rule from the rendered page rather than the code that produced it.
               </p>
               <p className="sv-qualifier">
-                Free, {LICENCE} licence. Node {NODE_ENGINE.replace('>=', '')} or newer. {DEPENDENCY_COUNT} runtime dependencies.
+                The package is free and uses a {LICENCE} licence. It requires Node {NODE_ENGINE.replace('>=', '')} or newer and has {DEPENDENCY_COUNT} runtime dependencies.
               </p>
             </div>
 
@@ -39,7 +38,7 @@ export default function SimpleHome() {
               <h2>Run the demo in your terminal.</h2>
               <p>The demo checks two bundled pages, one clean and one failing, and prints what it finds.</p>
               <CopyCommand command="npx glanceless demo" label="Command" />
-              <p className="sv-terms">No account. Runs on your machine. {LICENCE} licence.</p>
+              <p className="sv-terms">The package needs no account, runs on your machine, and uses a {LICENCE} licence.</p>
             </div>
           </section>
 
@@ -47,13 +46,13 @@ export default function SimpleHome() {
             <div className="sv-section-intro">
               <div>
                 <span className="sv-label">02 / WHAT YOU&apos;LL SEE</span>
-                <h2 id="sv-see">A finding you can act on.</h2>
+                <h2 id="sv-see">Each finding identifies a problem you can act on.</h2>
               </div>
-              <p>Each finding names the element, the rule and the numbers behind it. Open the list when you want the details.</p>
+              <p>Each finding names the element, the rule, and the numbers behind it. Open the list when you want the details.</p>
             </div>
 
             <div className="sv-card sv-result">
-              <div className="sv-step"><span>EXAMPLE RESULT</span><span>Captured from the package at {VIEWPORT}px</span></div>
+              <div className="sv-step"><span>EXAMPLE RESULT</span><span>The capture comes from the package at {VIEWPORT}px.</span></div>
               <h3>
                 The failing page broke {failedRules.length} rules with {FINDINGS.length} findings, so it exits {FAILING_EXIT}.
               </h3>
@@ -83,7 +82,7 @@ export default function SimpleHome() {
             <div className="sv-section-intro">
               <div>
                 <span className="sv-label">03 / THE RULES</span>
-                <h2 id="sv-rules">Seven ways a page can look fine and still fail.</h2>
+                <h2 id="sv-rules">Seven rules catch pages that look fine and still fail.</h2>
               </div>
               <p>Each rule opens the page in headless Chrome and measures the rendered result.</p>
             </div>
@@ -113,7 +112,7 @@ export default function SimpleHome() {
                 <span className="sv-step-n">2</span>
                 <h3>Point it at your page.</h3>
                 <pre className="sv-cmd" tabIndex={0}>{'glanceless <url|file|dir>'}</pre>
-                <p>A local file is served over HTTP, because Chromium treats a file image as cross-origin.</p>
+                <p>A local file is served over HTTP because Chromium treats a file image as cross-origin.</p>
               </li>
               <li className="sv-card">
                 <span className="sv-step-n">3</span>
@@ -135,28 +134,28 @@ export default function SimpleHome() {
             <div className="sv-section-intro">
               <div>
                 <span className="sv-label">05 / QUESTIONS</span>
-                <h2 id="sv-questions">A few useful answers.</h2>
+                <h2 id="sv-questions">Answers about the package</h2>
               </div>
               <p>The package&apos;s own suite passes {SUITE_PASSED} assertions.</p>
             </div>
-            <Disclosure title="Can I skip a rule that fails?">
-              <p>No. There is no --force, no allowlist and no known-issues file.</p>
+            <Disclosure title="Skipping a failing rule">
+              <p>The package has no --force, no allowlist, and no known-issues file.</p>
             </Disclosure>
-            <Disclosure title="Does it replace an accessibility review?">
-              <p>No. glanceless covers the design rules it was built to measure, not the full space of accessibility or design review. Manual review stays in the loop.</p>
+            <Disclosure title="The package does not replace an accessibility review.">
+              <p>No. glanceless measures its design rules, not the full space of accessibility or design review. Manual review stays in the loop.</p>
             </Disclosure>
-            <Disclosure title="Why does it read the page and not the code?">
-              <p>The same rendered fault is checked whether it came from a template, a CMS field or a hand-written route.</p>
+            <Disclosure title="Why glanceless reads the page instead of the code">
+              <p>glanceless checks the same rendered fault whether it came from a template, a CMS field or a hand-written route.</p>
             </Disclosure>
             <div className="sv-support">
-              <h3>Need a hand?</h3>
+              <h3>Get help with glanceless.</h3>
               <p>Email <a href="mailto:hello@thecompound.tech">hello@thecompound.tech</a> with the page and the output you saw.</p>
             </div>
           </section>
 
           <nav className="sv-next" aria-label="Next steps">
             <Link href="/guides/what-does-glanceless-check">What glanceless checks <span aria-hidden="true">{'↗'}</span></Link>
-            <Link href="/guides/how-to-check-rendered-webpage">How to check a rendered page <span aria-hidden="true">{'↗'}</span></Link>
+            <Link href="/guides/how-to-check-rendered-webpage">Check a rendered page <span aria-hidden="true">{'↗'}</span></Link>
             <a href={PRODUCT.repo} rel="noopener">Read the source <span aria-hidden="true">{'↗'}</span></a>
           </nav>
         </div>

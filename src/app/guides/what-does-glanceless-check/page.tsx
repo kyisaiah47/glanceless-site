@@ -18,7 +18,7 @@ export default function Guide() {
       {/* The Console chrome below is unchanged; Simple swaps in its own header. */}
       <ChromeSwitch simpleNode={<SimpleHeader />} consoleNode={<>
       <div className="read-strip"><div className="shell read-inner"><span><b>GUIDE</b> answer first</span><span><b>RULES.md</b> thresholds and incidents</span><span><b>read on</b> 2026-09-28</span></div></div>
-      <header className="mast"><div className="shell mast-inner"><Link className="brand" href="/"><span className="brand-mark"><img src="/icon.svg" alt="" width={22} height={22} /></span><strong>glanceless</strong></Link><span className="standing">MEASURE THE PAGE, NOT THE SOURCE</span><nav><Link href="/">Rules</Link><Link className="active" href="/guides/what-does-glanceless-check">Guide</Link><a href={README}>Source</a></nav></div></header>
+      <header className="mast"><div className="shell mast-inner"><Link className="brand" href="/"><span className="brand-mark"><img src="/icon.svg" alt="" width={22} height={22} /></span><strong>glanceless</strong></Link><span className="standing">MEASURE THE RENDERED PAGE, NOT THE SOURCE</span><nav><Link href="/">Rules</Link><Link className="active" href="/guides/what-does-glanceless-check">Guide</Link><a href={README}>Source</a></nav></div></header>
       </>} />
       <main className="shell guide-frame">
         <article className="guide-content">

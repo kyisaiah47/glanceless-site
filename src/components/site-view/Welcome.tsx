@@ -85,10 +85,9 @@ export default function Welcome() {
       </header>
 
       <div className="sv-welcome-intro">
-        <h2 id="sv-welcome-title">Does the page look right when a browser actually draws it?</h2>
+        <h2 id="sv-welcome-title">Check whether a browser actually draws the page correctly.</h2>
         <p>
-          glanceless opens a page in a real browser and measures it against seven design rules.
-          A page that breaks one fails, and the finding names the element and the numbers.
+          glanceless opens a page in a real browser and measures it against seven design rules. A page fails when it breaks one rule. The finding names the element and reports the numbers.
         </p>
       </div>
 
@@ -98,7 +97,7 @@ export default function Welcome() {
             <span>ILLUSTRATION</span>
             <span>FROM THE PACKAGE&apos;S OWN DEMO</span>
           </div>
-          <p className="sv-illustration-plan">A page that builds and renders, checked with the {first.rule} rule.</p>
+          <p className="sv-illustration-plan">The {first.rule} rule checks a page that builds and renders.</p>
           <p className="sv-illustration-found">
             <code>{first.sel}</code>
             <span>{first.msg.split('. ')[0]}. The check exits {FAILING_EXIT}.</span>
@@ -108,19 +107,19 @@ export default function Welcome() {
 
       <section className="sv-welcome-choose">
         <div className="sv-welcome-choose-head">
-          <h3>How would you like to explore?</h3>
+          <h3>Choose how to explore.</h3>
           <p>You can switch anytime.</p>
         </div>
         <div className="sv-choices">
           <button type="button" onClick={() => select('console')}>
             <b>Console</b>
             <strong>See more at once.</strong>
-            <span>Every rule, the captured run and its findings on one screen.</span>
+            <span>One screen shows every rule, the captured run and its findings.</span>
           </button>
           <button type="button" onClick={() => select('simple')}>
             <b>Simple</b>
             <strong>Start with the essentials.</strong>
-            <span>A roomier overview with details you can open as you go.</span>
+            <span>The roomier overview lets you open details as you go.</span>
           </button>
         </div>
       </section>
@@ -139,7 +138,7 @@ export default function Welcome() {
               } catch {}
             }}
           />
-          Don&apos;t open this when I come back
+          Do not open this when I come back
         </label>
       </footer>
     </dialog>

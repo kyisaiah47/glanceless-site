@@ -9,14 +9,14 @@ export default function NotFound() {
     <>
       {/* eslint-disable @next/next/no-img-element -- the marks are 22px and 20px, drawn as the guides draw them. */}
       <ChromeSwitch simpleNode={<SimpleHeader />} consoleNode={
-        <header className="mast"><div className="shell mast-inner"><Link className="brand" href="/"><span className="brand-mark"><img src="/icon.svg" alt="" width={22} height={22} /></span><strong>glanceless</strong></Link><span className="standing">MEASURE THE PAGE, NOT THE SOURCE</span><nav><Link href="/">Rules</Link><Link href="/guides/what-does-glanceless-check">Guide</Link></nav></div></header>
+        <header className="mast"><div className="shell mast-inner"><Link className="brand" href="/"><span className="brand-mark"><img src="/icon.svg" alt="" width={22} height={22} /></span><strong>glanceless</strong></Link><span className="standing">MEASURE THE RENDERED PAGE, NOT THE SOURCE</span><nav><Link href="/">Rules</Link><Link href="/guides/what-does-glanceless-check">Guide</Link></nav></div></header>
       } />
       <main className="shell guide-frame">
         <article className="guide-content">
           <p className="eyebrow">NOT FOUND</p>
           <h1>This page does not exist.</h1>
           <p className="guide-answer">The address may be mistyped, or the page may have moved.</p>
-          <p className="guide-back"><Link href="/">Go to the rules and the captured demo</Link></p>
+          <p className="guide-back"><Link href="/">View the rules and captured demo</Link></p>
           <p className="guide-back"><Link href="/guides/what-does-glanceless-check">What glanceless checks</Link></p>
         </article>
       </main>
