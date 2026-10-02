@@ -124,7 +124,8 @@ export default function SimpleHome() {
               <h3>What each exit code means</h3>
               <ul>
                 <li><span className="sv-code" data-ink="pass">0</span><p><strong>Checked, clean.</strong> Every rule passed.</p></li>
-                <li><span className="sv-code" data-ink="fail">1</span><p><strong>Checked, finding.</strong> A rule found a violation.</p></li>
+                <li><span className="sv-code" data-ink="fail">1</span><p><strong>Checked, finding.</strong> The
+                rule found a violation.</p></li>
                 <li><span className="sv-code" data-ink="caution">2</span><p><strong>Could not check.</strong> A missing browser or an unreachable page is never reported as clean.</p></li>
               </ul>
             </div>
