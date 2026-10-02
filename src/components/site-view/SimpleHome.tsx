@@ -148,7 +148,7 @@ export default function SimpleHome() {
               <p>glanceless checks the same rendered fault whether it came from a template, a CMS field or a hand-written route.</p>
             </Disclosure>
             <div className="sv-support">
-              <h3>Get help with glanceless.</h3>
+              <h3>What do you need help with?</h3>
               <p>Email <a href="mailto:hello@thecompound.tech">hello@thecompound.tech</a> with the page and the output you saw.</p>
             </div>
           </section>

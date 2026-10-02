@@ -85,7 +85,7 @@ export default function Welcome() {
       </header>
 
       <div className="sv-welcome-intro">
-        <h2 id="sv-welcome-title">Check whether a browser actually draws the page correctly.</h2>
+        <h2 id="sv-welcome-title">Does the page render correctly in a browser?</h2>
         <p>
           glanceless opens a page in a real browser and measures it against seven design rules. A page fails when it breaks one rule. The finding names the element and reports the numbers.
         </p>
@@ -107,7 +107,7 @@ export default function Welcome() {
 
       <section className="sv-welcome-choose">
         <div className="sv-welcome-choose-head">
-          <h3>Choose how to explore.</h3>
+          <h3>How do you want to explore?</h3>
           <p>You can switch anytime.</p>
         </div>
         <div className="sv-choices">
