@@ -19,3 +19,7 @@
 .shell.frame {
   align-items: start;
 }
+main#top.shell.frame > aside.left-rail,
+main#top.shell.frame > aside.right-rail {
+  align-self: start;
+}
