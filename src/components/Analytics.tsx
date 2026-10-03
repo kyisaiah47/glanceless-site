@@ -76,6 +76,12 @@ function init(): Promise<boolean> {
   return ready;
 }
 
+function isAutomatedBrowser(): boolean {
+  if (typeof navigator === 'undefined') return false;
+  const ua = navigator.userAgent || '';
+  return Boolean(navigator.webdriver) || /HeadlessChrome|HeadlessFirefox|PhantomJS|Playwright|Puppeteer/i.test(ua);
+}
+
 /** Capture an event, awaiting the SDK. An event fired while the SDK is in flight is sent when
  * the fetch lands instead of being dropped. */
 function capture(event: string, props?: Record<string, unknown>) {
@@ -196,7 +202,7 @@ function Tracker() {
     if (!pathname) return;
     // Browser-driven checks need a settled page before they can measure it. Automated browsers
     // are not real visitors and must not keep the check's network-idle wait open on PostHog.
-    if (navigator.webdriver) return;
+    if (isAutomatedBrowser()) return;
     let cancelled = false;
     /* The pageview AWAITS the SDK rather than testing a flag. With a static import
      * `initialized` was already true by the time this ran. With a fetch it is not, and an
