@@ -194,6 +194,9 @@ function Tracker() {
 
   useEffect(() => {
     if (!pathname) return;
+    // Browser-driven checks need a settled page before they can measure it. Automated browsers
+    // are not real visitors and must not keep the check's network-idle wait open on PostHog.
+    if (navigator.webdriver) return;
     let cancelled = false;
     /* The pageview AWAITS the SDK rather than testing a flag. With a static import
      * `initialized` was already true by the time this ran. With a fetch it is not, and an
