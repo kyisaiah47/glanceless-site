@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import ChromeSwitch from '@/components/site-view/ChromeSwitch';
+import PageViews from '@/components/site-view/PageViews';
 import ViewControls from '@/components/site-view/ViewControls';
 import { SimpleHeader, SimpleFooter } from '@/components/site-view/SimpleChrome';
 
@@ -13,14 +13,8 @@ export const metadata = {
 };
 
 export default function Guide() {
-  return (
-    <>
-      {/* The Console chrome below is unchanged; Simple swaps in its own header. */}
-      <ChromeSwitch simpleNode={<SimpleHeader />} consoleNode={<>
-      <div className="read-strip"><div className="shell read-inner"><span><b>GUIDE</b> answer first</span><span><b>RULES.md</b> thresholds and incidents</span><span><b>read on</b> 2026-09-28</span></div></div>
-      <header className="mast"><div className="shell mast-inner"><Link className="brand" href="/"><span className="brand-mark"><img src="/icon.svg" alt="" width={22} height={22} /></span><strong>glanceless</strong></Link><span className="standing">MEASURE THE RENDERED PAGE, NOT THE SOURCE</span><nav><Link href="/">Rules</Link><Link className="active" href="/guides/what-does-glanceless-check">Guide</Link><a href={README}>Source</a></nav></div></header>
-      </>} />
-      <main className="shell guide-frame">
+  /* The article is written once; the Console guide frame and the Simple page both read it. */
+  const article = (
         <article className="guide-content">
           <p className="eyebrow">GLANCELESS / SPECIFIC QUESTION</p>
           <h1>What does glanceless check in a rendered webpage?</h1>
@@ -31,11 +25,35 @@ export default function Guide() {
           <section className="guide-section"><h2>What does glanceless not replace?</h2><p>glanceless covers the design-system rules it was built to measure, not the full space of accessibility or design review. The product documents explicitly keep manual review in the loop; the tool removes a class of defects that can render normally while still failing the rule. <a href={README}>README</a> <span className="source-date">(checked 2026-09-28)</span></p></section>
           <p className="guide-back"><Link href="/">Back to the rules and captured demo</Link></p>
         </article>
-      </main>
-      <ChromeSwitch simpleNode={<SimpleFooter />} consoleNode={<>
+  );
+
+  return (
+    <>
+      {/* Each view renders its own chrome around the same article. */}
+      <PageViews
+        simpleView={
+          <>
+            <SimpleHeader />
+            <main className="sv-main sv-guide">
+              <div className="sv-in">{article}</div>
+            </main>
+            <SimpleFooter />
+          </>
+        }
+        consoleView={
+          <>
+
+      <div className="read-strip"><div className="shell read-inner"><span><b>GUIDE</b> answer first</span><span><b>RULES.md</b> thresholds and incidents</span><span><b>read on</b> 2026-09-28</span></div></div>
+      <header className="mast"><div className="shell mast-inner"><Link className="brand" href="/"><span className="brand-mark"><img src="/icon.svg" alt="" width={22} height={22} /></span><strong>glanceless</strong></Link><span className="standing">MEASURE THE RENDERED PAGE, NOT THE SOURCE</span><nav><Link href="/">Rules</Link><Link className="active" href="/guides/what-does-glanceless-check">Guide</Link><a href={README}>Source</a></nav></div></header>
+      
+      <main className="shell guide-frame">{article}</main>
+      
       <footer><div className="shell footer-inner"><div className="footer-credit">Built by <img className="studio-credit-mark" src="/brand/compound-labs.svg" alt="Compound Labs" width={20} height={20} /></div><span>© 2026 glanceless. A Compound Labs product.</span><a href="mailto:hello@thecompound.tech">hello@thecompound.tech</a></div></footer>
       <div className="sv-tools-strip"><div className="shell"><ViewControls /></div></div>
-      </>} />
+      
+          </>
+        }
+      />
     </>
   );
 }

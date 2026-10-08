@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import ChromeSwitch from '@/components/site-view/ChromeSwitch';
+import PageViews from '@/components/site-view/PageViews';
 import ViewControls from '@/components/site-view/ViewControls';
 import { SimpleHeader, SimpleFooter } from '@/components/site-view/SimpleChrome';
 
@@ -13,14 +13,8 @@ export const metadata = {
 };
 
 export default function Guide() {
-  return (
-    <>
-      {/* The Console chrome below is unchanged; Simple swaps in its own header. */}
-      <ChromeSwitch simpleNode={<SimpleHeader />} consoleNode={<>
-      <div className="read-strip"><div className="shell read-inner"><span><b>GUIDE</b> answer first</span><span><b>PROCEDURE</b> rendered page</span><span><b>read on</b> 2026-09-29</span></div></div>
-      <header className="mast"><div className="shell mast-inner"><Link className="brand" href="/"><span className="brand-mark"><img src="/icon.svg" alt="" width={22} height={22} /></span><strong>glanceless</strong></Link><span className="standing">MEASURE THE PAGE, NOT THE SOURCE</span><nav><Link href="/">Rules</Link><Link className="active" href="/guides/how-to-check-rendered-webpage">Guide</Link><a href={README}>Source</a></nav></div></header>
-      </>} />
-      <main className="shell guide-frame">
+  /* The article is written once; the Console guide frame and the Simple page both read it. */
+  const article = (
         <article className="guide-content">
           <p className="eyebrow">GLANCELESS / SPECIFIC QUESTION</p>
           <h1>How do you check a rendered webpage for design defects?</h1>
@@ -30,11 +24,35 @@ export default function Guide() {
           <section className="guide-section"><h2>What does each exit code mean?</h2><p>Exit code 0 means the page was checked and clean; exit code 1 means a rule found a violation; exit code 2 means the page could not be checked. A missing Chromium browser, unreachable page, failed route, or unreadable reference page remains 2 rather than being reported as clean. <a href={README}>README checked 2026-09-29.</a></p><div className="exit-grid"><div><b>0</b><span>checked, clean</span></div><div><b>1</b><span>checked, finding</span></div><div><b>2</b><span>could not check</span></div></div></section>
           <p className="guide-back"><Link href="/guides/what-does-glanceless-check">Read the complete list of rendered checks</Link></p>
         </article>
-      </main>
-      <ChromeSwitch simpleNode={<SimpleFooter />} consoleNode={<>
+  );
+
+  return (
+    <>
+      {/* Each view renders its own chrome around the same article. */}
+      <PageViews
+        simpleView={
+          <>
+            <SimpleHeader />
+            <main className="sv-main sv-guide">
+              <div className="sv-in">{article}</div>
+            </main>
+            <SimpleFooter />
+          </>
+        }
+        consoleView={
+          <>
+
+      <div className="read-strip"><div className="shell read-inner"><span><b>GUIDE</b> answer first</span><span><b>PROCEDURE</b> rendered page</span><span><b>read on</b> 2026-09-29</span></div></div>
+      <header className="mast"><div className="shell mast-inner"><Link className="brand" href="/"><span className="brand-mark"><img src="/icon.svg" alt="" width={22} height={22} /></span><strong>glanceless</strong></Link><span className="standing">MEASURE THE PAGE, NOT THE SOURCE</span><nav><Link href="/">Rules</Link><Link className="active" href="/guides/how-to-check-rendered-webpage">Guide</Link><a href={README}>Source</a></nav></div></header>
+      
+      <main className="shell guide-frame">{article}</main>
+      
       <footer><div className="shell footer-inner"><div className="footer-credit">Built by <img className="studio-credit-mark" src="/brand/compound-labs.svg" alt="Compound Labs" width={20} height={20} /></div><span>© 2026 glanceless. A Compound Labs product.</span><a href="mailto:hello@thecompound.tech">hello@thecompound.tech</a></div></footer>
       <div className="sv-tools-strip"><div className="shell"><ViewControls /></div></div>
-      </>} />
+      
+          </>
+        }
+      />
     </>
   );
 }

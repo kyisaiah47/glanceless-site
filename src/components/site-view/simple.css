@@ -166,6 +166,8 @@
 .sv-tools > div { display: flex; align-items: center; gap: 20px; }
 .sv-tools button { min-height: 44px; padding: 0; border: 0; background: none; color: var(--ink-2); font: inherit; cursor: pointer; }
 .sv-tools button:hover { color: var(--ink); }
+.sv-tools button:disabled { opacity: .45; cursor: not-allowed; }
+.sv-tools button:disabled:hover { color: var(--ink-2); }
 .sv-tools button[aria-pressed='true'] { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 6px; }
 .sv-tools-strip { border-top: 1px solid var(--line); background: var(--panel); }
 .sv-tools-strip .in { padding-top: 4px; padding-bottom: 4px; }
@@ -281,3 +283,26 @@
 .sv-footer .credit { display: inline-flex; align-items: center; gap: 9px; color: var(--ink-3); text-decoration: none; }
 .sv-footer .studio-credit-mark { display: block; width: 20px; height: 20px; }
 .sv-footer-credit { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 20px; font-size: 13px; color: var(--ink-3); }
+
+/* A GUIDE OR THE 404 IN SIMPLE. The article is the Console's own markup (globals.css guide-*
+ * classes); inside .sv-guide it reads at Simple sizes, in sans, under the Simple header. */
+.sv-guide .guide-content { padding: 64px 0 72px; }
+.sv-guide .guide-content .eyebrow { margin: 0; font: 11px/1.6 var(--mono); letter-spacing: 0.08em; color: var(--ink-3); }
+.sv-guide .guide-content h1 { margin: 16px 0 24px; font: 500 clamp(36px, 4vw, 56px)/1.08 var(--sans); letter-spacing: -0.035em; color: var(--ink); }
+.sv-guide .guide-answer { margin: 0 0 40px; font-size: 19px; line-height: 1.7; color: var(--ink); }
+.sv-guide .guide-section { padding: 48px 0; border-top: 1px solid var(--line); }
+.sv-guide .guide-section h2 { margin: 0 0 16px; font: 500 28px/1.25 var(--sans); letter-spacing: -0.02em; color: var(--ink); }
+.sv-guide .guide-section p, .sv-guide .guide-section li { font-size: 17px; line-height: 1.75; color: var(--ink-2); }
+.sv-guide .guide-section ol { padding-left: 24px; }
+.sv-guide .guide-content a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent-line); text-underline-offset: 4px; }
+.sv-guide .guide-content a:hover { text-decoration-color: var(--accent); }
+.sv-guide .source-date { font-size: 12px; color: var(--ink-3); }
+.sv-guide .guide-table { margin-top: 24px; }
+.sv-guide .guide-table > div { grid-template-columns: 200px 1fr; gap: 24px; padding: 16px 0; }
+.sv-guide .guide-table code { font-size: 14px; }
+.sv-guide .guide-table span { font-size: 16px; line-height: 1.6; color: var(--ink-2); }
+.sv-guide .guide-note { padding: 16px 20px; border: 1px solid var(--line-2); background: var(--panel); }
+.sv-guide .exit-grid { gap: 16px; margin-top: 24px; }
+.sv-guide .exit-grid div { padding: 18px; font: 15px/1.5 var(--sans); color: var(--ink-2); background: var(--panel); }
+.sv-guide .guide-back { padding-top: 16px; font: 16px/1.6 var(--sans); }
+@media (max-width: 720px) { .sv-guide .guide-table > div { grid-template-columns: 1fr; gap: 4px; } }
